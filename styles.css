@@ -328,3 +328,7 @@ audio::-webkit-media-controls-timeline::-webkit-progress-bar {
   body.no-cursor {
     cursor: none !important;
   }
+
+  ::selection {
+    display: none;
+  }
