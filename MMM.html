@@ -1,104 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMM - Misterios Misteriosamente Misteriosos</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #f0f0f0;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        h1, h2 {
-            font-family: 'Creepster', cursive;
-            color: red;
-            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.7);
-        }
-
-        .button {
-            background-color: #900;
-            color: white;
-            font-size: 24px;
-            border: 2px solid #f00;
-            padding: 20px 40px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .button:hover {
-            background-color: #f00;
-            transform: scale(1.1);
-        }
-
-        .fog {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
-            opacity: 0.2;
-            animation: fogAnimation 5s infinite alternate;
-        }
-
-        @keyframes fogAnimation {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 30px); }
-        }
-
-        #audio {
-            display: none;
-        }
-
-        .fadeIn {
-            animation: fadeIn 2s ease-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://cdn.pixabay.com/photo/2016/11/21/16/57/dark-1844295_960_720.jpg') no-repeat center center fixed;
-            background-size: cover;
-            filter: grayscale(100%) blur(2px);
-            z-index: -1;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMM - Horror y Verdad</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="fadeIn">
-    <div class="background"></div>
-    <div class="fog"></div>
-    <h1>Misterios Misteriosamente Misteriosos</h1>
-    <h2>El Horror que No Se Debería Recordar...</h2>
-    
-    <button class="button" onclick="playSound()">Reproducir</button>
-    <audio id="audio" preload="auto">
-        <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+<body>
+  <h1 class="title-horror">Misterios Misteriosamente Misteriosos</h1>
+
+  <div class="player">
+    <h2>Reproductor de Podcast</h2>
+    <audio controls>
+      <source src="sonido/Podcast.mp3" type="audio/mp3">
+      Tu navegador no soporta la reproducción de audio.
     </audio>
-    
-    <script>
-        function playSound() {
-            var audio = document.getElementById("audio");
-            audio.play();
-        }
-    </script>
+  </div>
+
+  <div class="episodes">
+    <div class="episode">👁️ Episodio 1: Mentes Torturadas: La Ciencia del Dolor</div>
+  </div>
+
+  <div class="secret-button">
+    <button onclick="triggerMadness()">NO HAGAS CLICK</button>
+  </div>
+
+  <div class="footer">
+    MMM no se hace responsable por lo que escuches después de las 3:00 am.
+  </div>
+
+  <footer>
+    <p>Sígueme en mis redes sociales:</p>
+    <a href="https://x.com/Joacoel26r7?t=drTx4eW5NQOnU3hPsc5TrA&s=09" target="_blank">X</a> | 
+    <a href="https://www.tiktok.com/@theyoungguy17?_t=ZM-8w5XZUGLPmg&_r=1" target="_blank">TikTok</a>
+  </footer>
+
+  <div id="screamer-img"></div>
+  <div id="screamer-text" class="text-glitch" style="display: none;">¿YA TE ESCUCHO?</div>
+  <div id="eye"></div>
+
+  <audio id="scream-sfx" src="sonido/screamer.mp3"></audio>
+  <audio id="ambient" src="sonido/ambient.mp3" autoplay loop></audio>
+
+  <script src="script.js"></script>
 </body>
 </html>

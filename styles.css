@@ -1,0 +1,330 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Share Tech Mono', monospace;
+    background: #000;
+    color: #f5f5f5;
+    overflow-x: hidden;
+    cursor: url('https://cur.cursors-4u.net/cursors/cur-13/cur1152.cur'), auto;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://www.transparenttextures.com/patterns/noise.png');
+    opacity: 0.06;
+    z-index: 1;
+    pointer-events: none;
+    animation: static 0.3s infinite, flicker 2s infinite;
+  }
+
+  @keyframes static {
+    0%, 100% { opacity: 0.05; }
+    50% { opacity: 0.1; }
+  }
+
+  @keyframes flicker {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(0.8); }
+  }
+
+  .glitch {
+    font-size: 4rem;
+    text-align: center;
+    color: #ff0000;
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 0 #000, -2px 0 #fff;
+    animation: glitchAnim 0.6s infinite steps(2, jump-none);
+    user-select: none;
+  }
+
+  @keyframes glitchAnim {
+    0% { transform: translate(0); }
+    25% { transform: translate(-2px, 1px) skewX(-10deg); }
+    50% { transform: translate(2px, -1px) skewX(10deg); }
+    75% { transform: translate(-3px, 2px) skewX(-5deg); }
+    100% { transform: translate(0); }
+  }
+
+/* Estilo para el contenedor del reproductor de audio */
+.player {
+    margin: 4rem auto;
+    width: 90%;
+    max-width: 600px;
+    background: #1a1a1a; /* Fondo negro con un toque gris oscuro */
+    border: 2px solid #990000; /* Borde rojo oscuro como si estuviera marcado */
+    padding: 1rem 2rem;
+    border-radius: 12px; /* Bordes más redondeados para ese toque oscuro */
+    box-shadow: 0 0 30px #ff0000, 0 0 60px #990000, 0 0 120px #ff6666; /* Sombras profundas para un resplandor demoníaco */
+    position: relative;
+    z-index: 2;
+}
+
+/* Estilo para el control de audio */
+audio {
+    width: 100%;
+    background-color: #222; /* Fondo más oscuro, más inestable */
+    border-radius: 12px; /* Bordes redondeados */
+    filter: grayscale(90%) contrast(180%) brightness(50%); /* Filtro de alta saturación y baja luminosidad */
+    border: 2px solid #660000; /* Bordes rojos descoloridos para dar sensación de desgaste */
+}
+
+/* Estilo para los controles nativos */
+audio::-webkit-media-controls-panel {
+    background-color: #111; /* Fondo del panel aún más oscuro */
+    border-radius: 12px;
+    border: 2px solid #990000; /* Borde sutilmente marcado */
+    box-shadow: 0 0 20px #ff0000; /* Resplandor tenue en todo el panel */
+}
+
+/* Estilo para el botón de reproducción */
+audio::-webkit-media-controls-play-button {
+    background-color: #990000; /* Rojo sucio, como si fuera sangre oscura */
+    border-radius: 50%;
+    padding: 14px;
+    transition: background-color 0.3s ease; /* Cambio de color suave al interactuar */
+    border: 2px solid #660000; /* Añadir borde para hacerlo más visible */
+    outline: none; /* Eliminar contorno predeterminado de los botones */
+}
+
+/* Hover sobre el botón de reproducción */
+audio::-webkit-media-controls-play-button:hover {
+    background-color: #7f0000; /* Rojo aún más oscuro */
+}
+
+/* Estilo para el control de volumen */
+audio::-webkit-media-controls-volume-slider {
+    background: #660000; /* Rojo oscuro para el control de volumen */
+    border-radius: 8px;
+    box-shadow: 0 0 15px #ff0000; /* Sombra débil, pero inquietante */
+}
+
+/* Estilo para los botones de avance y retroceso */
+audio::-webkit-media-controls-forward-button,
+audio::-webkit-media-controls-rewind-button {
+    background-color: #333; /* Gris oscuro para los botones */
+    border-radius: 50%;
+    padding: 12px;
+    border: 2px solid #ff0000; /* Un borde rojizo y demacrado */
+    outline: none; /* Eliminar contorno predeterminado de los botones */
+}
+
+/* Estilo para la barra de progreso */
+audio::-webkit-media-controls-timeline {
+    background-color: #5f1313; /* Gris muy oscuro para la barra de progreso */
+    border-radius: 12px;
+    box-shadow: 0 0 10px #ff0000; /* Resplandor leve pero inquietante */
+}
+
+/* Hacer más visible la línea de tiempo y el botón de inicio/pausa */
+audio::-webkit-media-controls-playback-rate {
+    display: none; /* Ocultar la opción de velocidad de reproducción */
+}
+
+audio::-webkit-media-controls-timeline {
+    height: 8px; /* Un poco más gruesa para que sea más visible */
+    background-color: #660000; /* Rojo para la línea de tiempo */
+    border-radius: 8px;
+}
+
+audio::-webkit-media-controls-play-button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    background-color: #480b0b; /* Un rojo más oscuro para mayor contraste */
+    border: 3px solid #ff0000;
+    outline: none; /* Eliminar contorno de foco de los botones */
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #c22626a2;
+    border: none;
+    box-shadow: 0 0 30px #ff0000; /* Aumentar el resplandor alrededor del panel */
+}
+
+/* Hover sobre el reproductor de audio para darle un toque más tétrico */
+audio:hover {
+    background-color: #ad3e3e; /* Oscurecimiento sutil cuando se pasa el cursor */
+    filter: brightness(70%) contrast(220%) grayscale(30%);
+}
+
+/* Hover sobre el botón de reproducción */
+audio:hover::-webkit-media-controls-play-button {
+    background-color: #671717; /* Rojo más sucio, como si fuera un objeto maldito */
+}
+
+/* Hover sobre el panel de controles */
+audio:hover::-webkit-media-controls-panel {
+    background-color: #7f0000; /* Rojo más sucio, como si fuera un objeto maldito */
+}
+
+/* Estilo para la barra de progreso cuando está en uso */
+audio::-webkit-media-controls-timeline::-webkit-progress-bar {
+    background-color: #660000; /* Rojo oscuro en la parte activa de la barra */
+}
+
+/* Sin animaciones, pero la apariencia es más sombría */
+
+
+  .episodes {
+    margin: 3rem auto;
+    max-width: 600px;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .episode {
+    background: #111;
+    padding: 1rem;
+    border: 2px dashed #a00;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    position: relative;
+  }
+
+  .episode:hover {
+    background: #1a0000;
+    color: #ff4444;
+    text-shadow: 0 0 10px red;
+  }
+
+  .secret-button {
+    text-align: center;
+    margin-top: 3rem;
+    z-index: 3;
+    position: relative;
+  }
+
+  .secret-button button {
+    background: black;
+    border: 1px solid crimson;
+    padding: 0.7rem 2.5rem;
+    color: crimson;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.2s ease;
+    box-shadow: 0 0 12px red;
+    text-transform: uppercase;
+  }
+
+  .secret-button button:hover {
+    background: darkred;
+    color: #fff;
+    box-shadow: 0 0 20px crimson;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 2rem;
+    color: #444;
+    position: relative;
+    z-index: 2;
+  }
+
+  footer {
+    text-align: center;
+    margin-bottom: 2rem;
+    z-index: 2;
+    position: relative;
+  }
+
+  footer a {
+    color: #990000;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: 0.3s;
+  }
+
+  footer a:hover {
+    color: #fff;
+    text-shadow: 0 0 5px red;
+  }
+
+  .corrupt-text {
+    animation: corrupt 0.2s infinite;
+    display: inline-block;
+  }
+
+  @keyframes corrupt {
+    0% { transform: translateY(0); }
+    20% { transform: translateY(-2px); }
+    40% { transform: translateY(2px); }
+    60% { transform: translateY(-1px); }
+    80% { transform: translateY(1px); }
+    100% { transform: translateY(0); }
+  }
+
+  .floating-text {
+    position: fixed;
+    color: red;
+    font-size: 0.9rem;
+    opacity: 0.08;
+    animation: float 15s linear infinite;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    from {
+      transform: translateY(100vh) translateX(0);
+    }
+    to {
+      transform: translateY(-100vh) translateX(50px);
+    }
+  }
+
+  .distort {
+    animation: distortAnim 0.1s ease-in-out 10;
+  }
+
+  @keyframes distortAnim {
+    0% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+    50% { transform: scale(1.05) rotate(2deg); filter: brightness(2); }
+    100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+  }
+
+  #screamer-img {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    background: black center center no-repeat;
+    background-size: cover;
+    filter: contrast(180%) saturate(200%) brightness(1.2);
+    animation: glitchFlash 0.15s steps(2, start) infinite;
+  }
+
+  @keyframes glitchFlash {
+    0%, 100% { opacity: 1; filter: hue-rotate(0deg); }
+    50% { opacity: 0.5; filter: hue-rotate(180deg); }
+  }
+
+  .title-horror {
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'Share Tech Mono', monospace;
+    color: #990000;
+    text-shadow: 0 0 6px #000, 0 0 12px crimson;
+    animation: fadeGlitch 4s ease-in-out infinite alternate;
+  }
+  
+  @keyframes fadeGlitch {
+    0% { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.03); }
+  }
+  
+
+  body.no-cursor {
+    cursor: none !important;
+  }
